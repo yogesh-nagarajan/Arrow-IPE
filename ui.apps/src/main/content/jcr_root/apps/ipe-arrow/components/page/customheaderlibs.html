@@ -1,0 +1,54 @@
+<!--/*
+    Copyright 2017 Adobe Systems Incorporated
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/-->
+<sly data-sly-use.tenantHelper="${'com.ipearrow.aem.core.models.TenantHelper'}" data-sly-unwrap>
+    <!-- Set brand on HTML element for React to use -->
+    <script data-sly-test="${!wcmmode.disabled}">
+        document.documentElement.setAttribute('data-brand', '${tenantHelper.brand}');
+    </script>
+</sly>
+
+<sly data-sly-use.clientlib="core/wcm/components/commons/v1/templates/clientlib.html" data-sly-unwrap>
+    <sly data-sly-call="${clientlib.css @ categories='ipe-arrow.base'}"/>
+    
+    <!--/*
+        Tenant-specific clientlib CSS
+    */-->
+    <sly data-sly-use.tenantHelper="${'com.ipearrow.aem.core.models.TenantHelper'}" data-sly-unwrap>
+        <sly data-sly-call="${clientlib.css @ categories=tenantHelper.reactClientlibCategory}"/>
+    </sly>
+</sly>
+
+<!--/*
+    SPA-specific meta tags
+*/-->
+<meta name="theme-color" content="#000000" />
+<link rel="icon" data-sly-use.tenantHelper="${'com.ipearrow.aem.core.models.TenantHelper'}" href="/etc.clientlibs/ipe-arrow/clientlibs/${tenantHelper.clientlibName}/resources/favicon.ico" />
+<link rel="apple-touch-icon" data-sly-use.tenantHelper="${'com.ipearrow.aem.core.models.TenantHelper'}" href="/etc.clientlibs/ipe-arrow/clientlibs/${tenantHelper.clientlibName}/resources/logo192.png" />
+<link rel="manifest" data-sly-use.tenantHelper="${'com.ipearrow.aem.core.models.TenantHelper'}" href="/etc.clientlibs/ipe-arrow/clientlibs/${tenantHelper.clientlibName}/resources/manifest.json" />
+<!-- AEM page model -->
+<meta
+    property="cq:pagemodel_root_url"
+    data-sly-use.page="com.adobe.aem.spa.project.core.models.Page"
+    content="${page.hierarchyRootJsonExportUrl}"
+/>
+
+<meta property="cq:datatype" data-sly-test="${wcmmode.edit || wcmmode.preview}" content="JSON" />
+<meta property="cq:wcmmode" data-sly-test="${wcmmode.edit}" content="edit" />
+<meta property="cq:wcmmode" data-sly-test="${wcmmode.preview}" content="preview" />
+<!--/*
+    There is currently no support for ContextHub in SPA projects:
+    https://docs.adobe.com/content/help/en/experience-manager-64/developing/headless/spas/spa-overview.html#limitations
+*/-->

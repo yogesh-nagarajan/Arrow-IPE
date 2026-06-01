@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/ipe-arrow" mode="merge"/>
+    <filter root="/content/ipe-arrow" mode="merge"/>
+    <filter root="/content/dam/ipe-arrow" mode="merge">
+        <exclude pattern="/content/dam/ipe-arrow(/.*)?"/>
+        <include pattern="/content/dam/ipe-arrow/jcr:content(/.*)?"/>
+    </filter>
+    <filter root="/content/dam/ipe-arrow/asset.jpg" mode="merge"/>
+    <filter root="/content/experience-fragments/ipe-arrow" mode="merge"/>
+</workspaceFilter>

@@ -1,0 +1,5 @@
+/* Medical brand-specific styles */
+.brand-medical {
+  --primary-color: #00cc66;
+  --secondary-color: #009944;
+}
